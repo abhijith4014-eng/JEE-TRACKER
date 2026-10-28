@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>JEE 2026 Preparation Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="magic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Cinzel+Decorative:wght@400;700;900&amp;family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <a href="index.html" class="home-btn" title="Back to Welcome">
+            <svg viewBox="0 0 512 512" width="32" height="32" fill="currentColor">
+                <path d="M464 480H48V224h32v-64h48v64h32V128h48v96h32V32h64v192h32v-96h48v96h32v64h48v-64h32v256zM224 480V256h-64v224h64zm128 0V256h-64v224h64z" />
+            </svg>
+        </a>
+        <header>
+            <h1 class="hp-theme">JEE MAINS <span class="jee-year">2026</span></h1>
+            <a href="mocktest.html" class="mock-test-link">⚔ Go to Mock Tests Dashboard</a>
+        </header>
+
+        <div class="stats-container">
+            <div class="total-progress">
+                <div class="progress-label">
+                    <span>Total Completion</span>
+                    <span id="total-percent">0%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="total-bar"></div>
+                </div>
+            </div>
+
+            <div class="subject-stats">
+                <div class="stat-card physics">
+                    <span class="subject-name">Physics</span>
+                    <span class="subject-percent" id="physics-percent">0%</span>
+                    <div class="mini-bar-bg">
+                        <div class="mini-bar-fill" id="physics-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-card chemistry">
+                    <span class="subject-name">Chemistry</span>
+                    <span class="subject-percent" id="chemistry-percent">0%</span>
+                    <div class="mini-bar-bg">
+                        <div class="mini-bar-fill" id="chemistry-bar"></div>
+                    </div>
+                </div>
+                <div class="stat-card maths">
+                    <span class="subject-name">Maths</span>
+                    <span class="subject-percent" id="maths-percent">0%</span>
+                    <div class="mini-bar-bg">
+                        <div class="mini-bar-fill" id="maths-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="chapters-grid">
+            <section class="subject-section physics-section">
+                <h2>Physics</h2>
+                <div class="chapter-list" id="physics-list">
+                    <!-- Chapters rendering here -->
+                </div>
+            </section>
+
+            <section class="subject-section chemistry-section">
+                <h2>Chemistry</h2>
+                <div class="chapter-list" id="chemistry-list">
+                    <!-- Chapters rendering here -->
+                </div>
+            </section>
+
+            <section class="subject-section maths-section">
+                <h2>Maths</h2>
+                <div class="chapter-list" id="maths-list">
+                    <!-- Chapters rendering here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script src="magic.js"></script>
+</body>
+</html>

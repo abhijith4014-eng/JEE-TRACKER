@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>JEE 2026 - Mock Tests</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mocktest.css">
+    <link rel="stylesheet" href="magic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Cinzel+Decorative:wght@400;700;900&amp;family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <script src="chart.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Home Button -->
+        <a href="index.html" class="home-btn" title="Back to Welcome">
+            <svg viewBox="0 0 512 512" width="32" height="32" fill="currentColor">
+                <path d="M464 480H48V224h32v-64h48v64h32V128h48v96h32V32h64v192h32v-96h48v96h32v64h48v-64h32v256zM224 480V256h-64v224h64zm128 0V256h-64v224h64z" />
+            </svg>
+        </a>
+
+        <header>
+            <h1 class="hp-theme">JEE MAINS <span class="jee-year">2026</span> MOCK TESTS</h1>
+            <a href="tracker.html" class="mock-test-link">📜 Go to Syllabus Tracker</a>
+        </header>
+
+        <section class="test-entry-form">
+            <h2>Add New Test</h2>
+            <form id="mockTestForm">
+                <div class="form-group">
+                    <label for="testName">Test Name</label>
+                    <input type="text" id="testName" placeholder="e.g. Minor Test 1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Date (DD / MM / YYYY)</label>
+                    <div class="date-inputs">
+                        <input type="number" id="day" placeholder="DD" min="1" max="31" required>
+                        <input type="number" id="month" placeholder="MM" min="1" max="12" required>
+                        <input type="number" id="year" placeholder="YYYY" min="2020" max="2040" required>
+                    </div>
+                </div>
+
+                <div class="marks-inputs">
+                    <div class="form-group">
+                        <label for="phyMarks">Physics</label>
+                        <input type="number" id="phyMarks" placeholder="Marks" min="0" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chemMarks">Chemistry</label>
+                        <input type="number" id="chemMarks" placeholder="Marks" min="0" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mathsMarks">Maths</label>
+                        <input type="number" id="mathsMarks" placeholder="Marks" min="0" max="100" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="add-test-btn">Add Test</button>
+            </form>
+        </section>
+
+        <section class="charts-container">
+            <div class="main-chart">
+                <h3>Total Marks Progression</h3>
+                <canvas id="totalMarksChart"></canvas>
+            </div>
+
+            <div class="sub-charts">
+                <div class="mini-chart">
+                    <h4 class="phy-text">Physics</h4>
+                    <canvas id="phyChart"></canvas>
+                </div>
+                <div class="mini-chart">
+                    <h4 class="chem-text">Chemistry</h4>
+                    <canvas id="chemChart"></canvas>
+                </div>
+                <div class="mini-chart">
+                    <h4 class="math-text">Maths</h4>
+                    <canvas id="mathChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="test-history">
+            <h2>Test History</h2>
+            <div id="testList" class="test-list-grid">
+                <!-- Test cards will be injected here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3>Delete Test Record?</h3>
+            <p>Are you certain you wish to obliterate this record? This spell cannot be reversed.</p>
+            <div class="modal-actions">
+                <button id="cancelDelete" class="modal-btn cancel">Cancel</button>
+                <button id="confirmDelete" class="modal-btn delete">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="mocktest.js"></script>
+    <script src="magic.js"></script>
+</body>
+</html>

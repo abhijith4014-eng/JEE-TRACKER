@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
+    <title>JEE 2026 - Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="welcome.css">
+    <link rel="stylesheet" href="magic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=Cinzel+Decorative:wght@400;700;900&amp;family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <script src="chart.js"></script>
+</head>
+
+<body>
+    <div class="welcome-container">
+        <header class="welcome-header">
+            <h1 class="hp-theme">JEE MAINS <span class="jee-year">2026</span></h1>
+            <div id="countdown-container" class="countdown-display" title="Long press or click target date to edit">
+                <div class="countdown-item">
+                    <span class="count-val" id="days">00</span>
+                    <span class="count-label">Days</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="count-val" id="hours">00</span>
+                    <span class="count-label">Hrs</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="count-val" id="minutes">00</span>
+                    <span class="count-label">Mins</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="count-val" id="seconds">00</span>
+                    <span class="count-label">Secs</span>
+                </div>
+            </div>
+
+            <p id="exam-date-label" class="exam-date-label" title="Click to change target date"></p>
+        </header>
+
+        <div class="welcome-main-layout">
+            <!-- Left Side: Tracker Potion & Enter Button -->
+            <div class="welcome-left">
+                <div class="potion-container">
+                    <div class="liquid-gauge">
+                        <div class="liquid" id="syllabus-liquid"></div>
+                        <div class="percentage-text" id="welcome-percent">0%</div>
+                    </div>
+                    <div class="potion-glow"></div>
+                </div>
+
+                <a href="tracker.html" class="enter-btn">
+                    <span class="btn-text">Enter Tracker</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+
+            <!-- Right Side: Graph & Mock Test Button -->
+            <div class="welcome-right" id="welcomeRightPanel" style="display: none;">
+                <div id="latestScoreDisplay" class="score-display"></div>
+
+                <div class="welcome-chart-container">
+                    <canvas id="welcomeTotalChart"></canvas>
+                </div>
+
+                <a href="mocktest.html" class="enter-btn secondary-btn">
+                    <span class="btn-text">Mock Tests Dashboard</span>
+                    <div class="btn-shine"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exam Date Modal -->
+    <div id="dateModal" class="modal">
+        <div class="modal-content">
+            <h3>When is your JEE Mains?</h3>
+            <p>Enter the date of your exam to start the countdown.</p>
+            <input type="date" id="examDateInput" class="modal-input" required>
+            <div class="modal-actions">
+                <button id="saveDateBtn" class="modal-btn delete"
+                    style="background: var(--text-gold); color: #000;">Start Countdown</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="welcome.js"></script>
+    <script src="magic.js"></script>
+</body>
+</html>

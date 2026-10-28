@@ -1,0 +1,510 @@
+:root {
+    /* Harry Potter Theme Palette */
+    --bg-color: #0c0e14;
+    /* Deep Dark */
+    --parchment-bg: #1e1b2e;
+    /* Dark Magical bg */
+    --parchment-border: #4a4063;
+
+    --text-primary: #e2e8f0;
+    --text-gold: #ffb800;
+    --text-secondary: #94a3b8;
+
+    /* Houses / Subjects */
+    --phy-color: #22a4f5;
+    /* Ravenclaw Blue - Physics/Wisdom */
+    --chem-color: #238531;
+    /* Slytherin Green - Potions/Chemistry */
+    --math-color: #b91c1c;
+    /* Gryffindor Red - Maths/Bravery */
+
+    --gold-accent: #f59e0b;
+    --silver-accent: #94a3b8;
+
+    --phy-glow: rgba(34, 164, 245, 0.4);
+    --chem-glow: rgba(35, 133, 49, 0.4);
+    --math-glow: rgba(185, 28, 28, 0.4);
+
+    --font-heading: 'Cinzel Decorative', cursive;
+    --font-body: 'Crimson Text', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    padding: 20px;
+    background-image:
+        radial-gradient(1px 1px at 10% 10%, rgba(255, 255, 255, 0.2) 1px, transparent 0),
+        radial-gradient(1px 1px at 20% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 0),
+        radial-gradient(2px 2px at 30% 70%, rgba(255, 255, 255, 0.15) 1px, transparent 0),
+        radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.8) 0%, #0c0e14 100%);
+    background-repeat: repeat;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+
+    /* Disable Text Selection / Copying */
+    -webkit-user-select: none;
+    /* Safari/Chrome */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* Standard */
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    position: relative;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.hp-theme {
+    font-family: 'Cinzel Decorative', cursive;
+    color: var(--text-gold);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    text-shadow:
+        0 2px 0 #000,
+        0 0 10px rgba(245, 158, 11, 0.6),
+        0 0 20px rgba(245, 158, 11, 0.4);
+    view-transition-name: page-title;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+
+
+/* Glassmorphic Stats Container */
+.stats-container {
+    background: rgba(22, 28, 45, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid var(--parchment-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    /* Changed from sticky to relative */
+    z-index: 10;
+}
+
+.total-progress {
+    margin-bottom: 30px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-gold);
+    letter-spacing: 1px;
+}
+
+.progress-bar-bg {
+    height: 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    border: 1px solid #333;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #b91c1c, #d97706, #22a4f5);
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px rgba(217, 119, 6, 0.5);
+    position: relative;
+}
+
+/* Shimmer effect on progress bar */
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transform: translateX(-100%);
+    animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.subject-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.stat-card {
+    background: rgba(12, 14, 20, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stat-card.physics {
+    border-top: 3px solid var(--phy-color);
+    box-shadow: 0 4px 10px rgba(34, 164, 245, 0.1);
+}
+
+.stat-card.chemistry {
+    border-top: 3px solid var(--chem-color);
+    box-shadow: 0 4px 10px rgba(35, 133, 49, 0.1);
+}
+
+.stat-card.maths {
+    border-top: 3px solid var(--math-color);
+    box-shadow: 0 4px 10px rgba(185, 28, 28, 0.1);
+}
+
+.stat-card .subject-name {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.stat-card .subject-percent {
+    display: block;
+    font-size: 2rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.mini-bar-bg {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mini-bar-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.6s ease;
+}
+
+.physics .mini-bar-fill {
+    background-color: var(--phy-color);
+    box-shadow: 0 0 8px var(--phy-glow);
+}
+
+.chemistry .mini-bar-fill {
+    background-color: var(--chem-color);
+    box-shadow: 0 0 8px var(--chem-glow);
+}
+
+.maths .mini-bar-fill {
+    background-color: var(--math-color);
+    box-shadow: 0 0 8px var(--math-glow);
+}
+
+.chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.subject-section {
+    background: rgba(26, 29, 41, 0.7);
+    /* Darker parchment */
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--parchment-border);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle magical pattern overlay */
+.subject-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.subject-section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+
+.physics-section h2 {
+    color: var(--phy-color);
+    text-shadow: 0 0 10px var(--phy-glow);
+}
+
+.chemistry-section h2 {
+    color: var(--chem-color);
+    text-shadow: 0 0 10px var(--chem-glow);
+}
+
+.maths-section h2 {
+    color: var(--math-color);
+    text-shadow: 0 0 10px var(--math-glow);
+}
+
+.chapter-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    user-select: none;
+}
+
+.chapter-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.checkbox-container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.custom-checkbox {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--text-secondary);
+    /* Silver border initially */
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: absolute;
+    pointer-events: none;
+}
+
+.physics-section .custom-checkbox:checked {
+    background-color: var(--phy-color);
+    border-color: var(--phy-color);
+}
+
+.chemistry-section .custom-checkbox:checked {
+    background-color: var(--chem-color);
+    border-color: var(--chem-color);
+}
+
+.maths-section .custom-checkbox:checked {
+    background-color: var(--math-color);
+    border-color: var(--math-color);
+}
+
+.checkbox-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #fff;
+    pointer-events: none;
+    transition: transform 0.4s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    /* Bouncy pop */
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.custom-checkbox:checked+.checkbox-icon {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.chapter-name {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+    transition: color 0.3s;
+}
+
+.completed .chapter-name {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a4063;
+    border-radius: 5px;
+    border: 2px solid #0f172a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5f527a;
+}
+
+.home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    background: rgba(12, 14, 20, 0.9);
+    border: 3px solid var(--parchment-border);
+    border-radius: 50%;
+    color: var(--text-gold);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 200;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.home-btn:hover {
+    background: var(--text-gold);
+    color: #2a1b0a;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.7);
+    border-color: #78350f;
+}
+
+.home-btn svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 600px) {
+    .home-btn {
+        width: 40px;
+        height: 40px;
+        left: 15px;
+        top: 15px;
+        border-width: 2px;
+        position: absolute;
+        /* Ensure absolute on mobile too */
+    }
+
+    .home-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* 3 Sections Horizontal Scroll View for Mobile */
+    .chapters-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 15px;
+        padding-bottom: 20px;
+        /* Space for scrollbar */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .subject-section {
+        min-width: 85vw;
+        /* Show one main section + peek at next */
+        scroll-snap-align: center;
+        margin-bottom: 0;
+    }
+}
+
+/* Slow down the view transition for the title */
+::view-transition-group(page-title) {
+    animation-duration: 2s;
+    /* Slower morph */
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Styling for the new Mock Test link on the tracker page */
+.mock-test-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: 1px solid var(--parchment-border);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.mock-test-link:hover {
+    background: var(--text-gold);
+    color: #451a03;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    transform: translateY(-2px);
+}

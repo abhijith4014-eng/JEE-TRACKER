@@ -1,0 +1,52 @@
+/* Magic Particle Styles */
+.magic-particle {
+    position: fixed;
+    pointer-events: none;
+    background: radial-gradient(circle, #fff, transparent);
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: sparkle-fade 1s ease-out forwards;
+}
+
+.magic-burst-particle {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 1;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+@keyframes sparkle-fade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
+
+/* Cursor Glow Effect */
+.cursor-glow {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.4), transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: screen;
+    transition: width 0.2s, height 0.2s;
+}
+
+body:active .cursor-glow {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.8), transparent 70%);
+}
